@@ -1,43 +1,53 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeler - MizerLimited</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projeler - MizerLimited</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page-wrapper">
-    <header id="site-header" class="header"></header>
-    <div id="ad-top" class="ad-slot ad-top" style="display:none;"></div>
-
-    <main>
-      <div class="layout-with-ads container">
-        <div id="ad-left" class="ad-slot ad-left" style="display:none;"></div>
-
-        <div class="main-content">
-          <h1 class="page-title" data-i18n="projects_title">Projeler</h1>
-          <p class="page-desc" data-i18n="projects_desc">Tüm projelerimizi buradan inceleyebilir ve indirebilirsiniz.</p>
-
-          <div id="categories" class="categories"></div>
-          <div id="projects-list"></div>
-        </div>
-
-        <div id="ad-right" class="ad-slot ad-right" style="display:none;"></div>
-      </div>
-    </main>
-
-    <div id="ad-bottom" class="ad-slot ad-bottom" style="display:none;"></div>
-    <footer id="site-footer" class="footer"></footer>
-  </div>
-
-  <script src="i18n.js"></script>
-  <script src="main.js"></script>
-  <script>
-    initCommon('projects').then(() => {
-      renderCategories();
-      renderProjects();
-    });
-  </script>
+<header><div class="wrap">
+  <a class="logo" href="index.html">Mizer<span>Limited</span></a>
+  <nav><a href="index.html">Ana sayfa</a><a href="projects.html" aria-current="page">Projeler</a></nav>
+</div></header>
+<main class="wrap">
+  <section class="page-head">
+    <h1>Projeler</h1>
+    <p>Tüm projelerimizi inceleyebilir ve doğrudan indirebilirsiniz.</p>
+    <input class="search" id="ara" type="search" placeholder="Proje ara" aria-label="Proje ara">
+  </section>
+  <section class="grid" id="liste">
+    <!-- Yeni proje eklemek için aşağıdaki article bloğunu kopyalayın -->
+    <article class="card">
+      <h2>Proje Bir</h2>
+      <p>Projenin ne işe yaradığını burada bir iki cümleyle anlatın.</p>
+      <div class="meta"><span>Sürüm 1.0</span><span>12 MB</span></div>
+      <a class="btn" href="indirmeler/proje-bir.zip" download>İndir</a>
+    </article>
+    <article class="card">
+      <h2>Proje İki</h2>
+      <p>Projenin ne işe yaradığını burada bir iki cümleyle anlatın.</p>
+      <div class="meta"><span>Sürüm 1.0</span><span>8 MB</span></div>
+      <a class="btn" href="indirmeler/proje-iki.zip" download>İndir</a>
+    </article>
+    <article class="card">
+      <h2>Proje Üç</h2>
+      <p>Projenin ne işe yaradığını burada bir iki cümleyle anlatın.</p>
+      <div class="meta"><span>Sürüm 1.0</span><span>20 MB</span></div>
+      <a class="btn" href="indirmeler/proje-uc.zip" download>İndir</a>
+    </article>
+    <p class="empty" id="bos" hidden>Aramanızla eşleşen proje bulunamadı.</p>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 MizerLimited</div></footer>
+<script>
+const kutu=document.getElementById('ara'),kartlar=[...document.querySelectorAll('.card')],bos=document.getElementById('bos');
+kutu.addEventListener('input',()=>{const q=kutu.value.trim().toLocaleLowerCase('tr');let n=0;
+kartlar.forEach(k=>{const g=k.textContent.toLocaleLowerCase('tr').includes(q);k.hidden=!g;if(g)n++});bos.hidden=n>0});
+</script>
 </body>
 </html>
