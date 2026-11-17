@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeler - MizerLimited</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <header id="site-header" class="header"></header>
+    <div id="ad-top" class="ad-slot ad-top" style="display:none;"></div>
+
+    <main>
+      <div class="layout-with-ads container">
+        <div id="ad-left" class="ad-slot ad-left" style="display:none;"></div>
+
+        <div class="main-content">
+          <h1 class="page-title" data-i18n="projects_title">Projeler</h1>
+          <p class="page-desc" data-i18n="projects_desc">Tüm projelerimizi buradan inceleyebilir ve indirebilirsiniz.</p>
+
+          <div id="categories" class="categories"></div>
+          <div id="projects-list"></div>
+        </div>
+
+        <div id="ad-right" class="ad-slot ad-right" style="display:none;"></div>
+      </div>
+    </main>
+
+    <div id="ad-bottom" class="ad-slot ad-bottom" style="display:none;"></div>
+    <footer id="site-footer" class="footer"></footer>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+  <script>
+    initCommon('projects').then(() => {
+      renderCategories();
+      renderProjects();
+    });
+  </script>
+</body>
+</html>

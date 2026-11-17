@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proje - MizerLimited</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <header id="site-header" class="header"></header>
+    <div id="ad-top" class="ad-slot ad-top" style="display:none;"></div>
+
+    <main>
+      <div class="container">
+        <div id="project-detail" class="project-detail">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </main>
+
+    <div id="ad-bottom" class="ad-slot ad-bottom" style="display:none;"></div>
+    <footer id="site-footer" class="footer"></footer>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+  <script>
+    initCommon('projects').then(() => {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const data = getData();
+      const lang = getLang();
+      const container = document.getElementById('project-detail');
+
+      if (!id || !data) {
+        container.innerHTML = '<p>Proje bulunamadı.</p>';
+        return;
+      }
+
+      const project = data.projects.find(p => p.id === id);
+      if (!project) {
+        container.innerHTML = '<p>Proje bulunamadı.</p>';
+        return;
+      }
+
+      let videoHtml = '';
+      if (project.videoUrl) {
+        let embedUrl = project.videoUrl;
+        // Simple YouTube conversion
+        if (embedUrl.includes('youtube.com/watch')) {
+          const vid = new URL(embedUrl).searchParams.get('v');
+          if (vid) embedUrl = 'https://www.youtube.com/embed/' + vid;
+        } else if (embedUrl.includes('youtu.be/')) {
+          const vid = embedUrl.split('youtu.be/')[1]?.split('?')[0];
+          if (vid) embedUrl = 'https://www.youtube.com/embed/' + vid;
+        }
+        videoHtml = `
+          <div class="project-detail-video">
+            <iframe src="${embedUrl}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          </div>
+        `;
+      }
+
+      container.innerHTML = `
+        <a href="projects.html" class="btn btn-secondary btn-sm" style="margin-bottom:20px;" data-i18n="back_to_projects">← Projelere Dön</a>
+        <h1 class="page-title">${getLocalized(project.title, lang)}</h1>
+        <div class="project-meta">
+          <span><strong data-i18n="category">Kategori</strong>: ${getCategoryName(project.categoryId, lang)}</span>
+        </div>
+        ${project.image ? `<img class="project-detail-img" src="${project.image}" alt="">` : ''}
+        ${videoHtml}
+        <p style="margin: 20px 0; line-height: 1.7;">${getLocalized(project.description, lang)}</p>
+        <a href="${project.downloadUrl || '#'}" class="btn btn-primary" data-i18n="download" ${!project.downloadUrl || project.downloadUrl === '#' ? 'onclick="alert(\'İndirme linki henüz eklenmemiş\');return false;"' : 'target="_blank"'}>
+          ${t('download')}
+        </a>
+      `;
+      applyTranslations();
+    });
+  </script>
+</body>
+</html>

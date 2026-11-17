@@ -1,0 +1,139 @@
+{
+  "settings": {
+    "siteName": "MizerLimited",
+    "siteDescription": "Mizer Limited - Projeler ve yazılımlar",
+    "contactEmail": "mzerlimited@gmail.com",
+    "defaultTheme": "dark",
+    "defaultLang": "tr",
+    "novaEnabled": true
+  },
+  "admin": {
+    "email": "mzerlimited@gmail.com",
+    "password": "ZahitZeyn2016zz"
+  },
+  "categories": [
+    { "id": "cat1", "name": { "tr": "Araçlar", "en": "Tools", "de": "Werkzeuge", "fr": "Outils", "es": "Herramientas", "pt": "Ferramentas", "ru": "Инструменты" } },
+    { "id": "cat2", "name": { "tr": "Oyunlar", "en": "Games", "de": "Spiele", "fr": "Jeux", "es": "Juegos", "pt": "Jogos", "ru": "Игры" } },
+    { "id": "cat3", "name": { "tr": "Yardımcı", "en": "Utilities", "de": "Hilfsprogramme", "fr": "Utilitaires", "es": "Utilidades", "pt": "Utilitários", "ru": "Утилиты" } }
+  ],
+  "projects": [
+    {
+      "id": "proj1",
+      "title": { "tr": "Örnek Proje 1", "en": "Sample Project 1", "de": "Beispielprojekt 1", "fr": "Projet Exemple 1", "es": "Proyecto de Ejemplo 1", "pt": "Projeto Exemplo 1", "ru": "Пример проекта 1" },
+      "description": { "tr": "Bu bir örnek proje açıklamasıdır. İndirebilir ve kullanabilirsiniz.", "en": "This is a sample project description. You can download and use it.", "de": "Dies ist eine Beispielprojektbeschreibung. Sie können es herunterladen und verwenden.", "fr": "Ceci est une description de projet exemple. Vous pouvez le télécharger et l'utiliser.", "es": "Esta es una descripción de proyecto de ejemplo. Puedes descargarlo y usarlo.", "pt": "Esta é uma descrição de projeto de exemplo. Você pode baixá-lo e usá-lo.", "ru": "Это описание примерного проекта. Вы можете скачать и использовать его." },
+      "categoryId": "cat1",
+      "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=340&fit=crop",
+      "videoUrl": "",
+      "downloadUrl": "#",
+      "featured": true
+    },
+    {
+      "id": "proj2",
+      "title": { "tr": "Örnek Oyun", "en": "Sample Game", "de": "Beispielspiel", "fr": "Jeu Exemple", "es": "Juego de Ejemplo", "pt": "Jogo Exemplo", "ru": "Пример игры" },
+      "description": { "tr": "Eğlenceli bir örnek oyun projesi.", "en": "A fun sample game project.", "de": "Ein unterhaltsames Beispielspielprojekt.", "fr": "Un projet de jeu exemple amusant.", "es": "Un proyecto de juego de ejemplo divertido.", "pt": "Um projeto de jogo de exemplo divertido.", "ru": "Весёлый пример игрового проекта." },
+      "categoryId": "cat2",
+      "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=340&fit=crop",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "downloadUrl": "#",
+      "featured": false
+    }
+  ],
+  "ads": [
+    {
+      "id": "ad1",
+      "image": "https://placehold.co/728x90/1a1a2e/7c5cfc?text=Reklam+Alani+1",
+      "link": "https://example.com",
+      "position": "top",
+      "active": true
+    },
+    {
+      "id": "ad2",
+      "image": "https://placehold.co/160x600/1a1a2e/7c5cfc?text=Reklam",
+      "link": "https://example.com",
+      "position": "left",
+      "active": false
+    },
+    {
+      "id": "ad3",
+      "image": "https://placehold.co/160x600/1a1a2e/7c5cfc?text=Reklam",
+      "link": "https://example.com",
+      "position": "right",
+      "active": false
+    },
+    {
+      "id": "ad4",
+      "image": "https://placehold.co/728x90/1a1a2e/7c5cfc?text=Reklam+Alani+2",
+      "link": "https://example.com",
+      "position": "bottom",
+      "active": false
+    }
+  ],
+  "novaResponses": {
+    "greetings": ["merhaba", "selam", "hey", "hi", "hello", "günaydın", "iyi günler", "iyi akşamlar"],
+    "replies": {
+      "greeting": {
+        "tr": "Merhaba! Ben Nova, Mizer Limited asistanıyım. Size nasıl yardımcı olabilirim?",
+        "en": "Hello! I'm Nova, the Mizer Limited assistant. How can I help you?",
+        "de": "Hallo! Ich bin Nova, der Mizer Limited Assistent. Wie kann ich Ihnen helfen?",
+        "fr": "Bonjour ! Je suis Nova, l'assistant de Mizer Limited. Comment puis-je vous aider ?",
+        "es": "¡Hola! Soy Nova, el asistente de Mizer Limited. ¿Cómo puedo ayudarte?",
+        "pt": "Olá! Eu sou Nova, o assistente da Mizer Limited. Como posso ajudar?",
+        "ru": "Привет! Я Nova, ассистент Mizer Limited. Чем могу помочь?"
+      },
+      "projects": {
+        "tr": "Projelerimizi görmek için üst menüden 'Projeler' sayfasına gidebilirsiniz. Orada kategorilere göre filtreleyebilirsiniz.",
+        "en": "You can view our projects from the 'Projects' page in the top menu. You can filter by categories there.",
+        "de": "Sie können unsere Projekte über die Seite 'Projekte' im oberen Menü ansehen. Dort können Sie nach Kategorien filtern.",
+        "fr": "Vous pouvez voir nos projets depuis la page 'Projets' dans le menu supérieur. Vous pouvez filtrer par catégories.",
+        "es": "Puedes ver nuestros proyectos desde la página 'Proyectos' en el menú superior. Puedes filtrar por categorías.",
+        "pt": "Você pode ver nossos projetos na página 'Projetos' no menu superior. Você pode filtrar por categorias.",
+        "ru": "Вы можете посмотреть наши проекты на странице «Проекты» в верхнем меню. Там можно фильтровать по категориям."
+      },
+      "download": {
+        "tr": "Her projenin detay sayfasında indirme butonu bulunur. Giriş yapmanıza gerek yok, herkes indirebilir.",
+        "en": "Each project has a download button on its detail page. No login required, everyone can download.",
+        "de": "Jedes Projekt hat einen Download-Button auf der Detailseite. Keine Anmeldung erforderlich.",
+        "fr": "Chaque projet a un bouton de téléchargement sur sa page de détail. Aucune connexion requise.",
+        "es": "Cada proyecto tiene un botón de descarga en su página de detalles. No se requiere inicio de sesión.",
+        "pt": "Cada projeto tem um botão de download na página de detalhes. Não é necessário login.",
+        "ru": "У каждого проекта есть кнопка скачивания на странице деталей. Вход не требуется."
+      },
+      "about": {
+        "tr": "Mizer Limited, çeşitli yazılım ve araç projeleri geliştiren bir platformdur. Daha fazla bilgi için Hakkında sayfasına bakabilirsiniz.",
+        "en": "Mizer Limited is a platform that develops various software and tool projects. Check the About page for more info.",
+        "de": "Mizer Limited ist eine Plattform, die verschiedene Software- und Tool-Projekte entwickelt.",
+        "fr": "Mizer Limited est une plateforme qui développe divers projets logiciels et outils.",
+        "es": "Mizer Limited es una plataforma que desarrolla varios proyectos de software y herramientas.",
+        "pt": "Mizer Limited é uma plataforma que desenvolve vários projetos de software e ferramentas.",
+        "ru": "Mizer Limited — платформа, разрабатывающая различные программные проекты и инструменты."
+      },
+      "contact": {
+        "tr": "Bizimle iletişime geçmek için mzerlimited@gmail.com adresine mail atabilirsiniz.",
+        "en": "You can contact us by emailing mzerlimited@gmail.com.",
+        "de": "Sie können uns per E-Mail an mzerlimited@gmail.com kontaktieren.",
+        "fr": "Vous pouvez nous contacter par e-mail à mzerlimited@gmail.com.",
+        "es": "Puedes contactarnos enviando un correo a mzerlimited@gmail.com.",
+        "pt": "Você pode nos contatar enviando um e-mail para mzerlimited@gmail.com.",
+        "ru": "Вы можете связаться с нами по почте mzerlimited@gmail.com."
+      },
+      "nova": {
+        "tr": "Ben Nova, Mizer Limited'in yardımcı asistanıyım. Projeler, indirme ve iletişim hakkında sorularınızı yanıtlayabilirim.",
+        "en": "I'm Nova, the helpful assistant of Mizer Limited. I can answer questions about projects, downloads and contact.",
+        "de": "Ich bin Nova, der hilfreiche Assistent von Mizer Limited.",
+        "fr": "Je suis Nova, l'assistant utile de Mizer Limited.",
+        "es": "Soy Nova, el asistente útil de Mizer Limited.",
+        "pt": "Eu sou Nova, o assistente útil da Mizer Limited.",
+        "ru": "Я Nova, полезный ассистент Mizer Limited."
+      },
+      "fallback": {
+        "tr": "Üzgünüm, bu konuda tam olarak yardımcı olamıyorum. Projeler, indirme veya iletişim hakkında sorabilirsiniz.",
+        "en": "Sorry, I can't help with that exactly. You can ask about projects, downloads or contact.",
+        "de": "Entschuldigung, dabei kann ich nicht genau helfen. Fragen Sie zu Projekten, Downloads oder Kontakt.",
+        "fr": "Désolé, je ne peux pas vraiment aider là-dessus. Vous pouvez demander sur les projets, téléchargements ou contact.",
+        "es": "Lo siento, no puedo ayudar exactamente con eso. Puedes preguntar sobre proyectos, descargas o contacto.",
+        "pt": "Desculpe, não posso ajudar exatamente com isso. Você pode perguntar sobre projetos, downloads ou contato.",
+        "ru": "Извините, я не могу точно помочь с этим. Спросите о проектах, скачивании или контактах."
+      }
+    }
+  }
+}

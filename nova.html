@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova - MizerLimited</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <header id="site-header" class="header"></header>
+
+    <main>
+      <div class="container">
+        <div class="nova-container">
+          <div class="nova-header">
+            <div class="nova-avatar">N</div>
+            <div>
+              <strong data-i18n="nova_title">Nova Asistan</strong>
+              <div style="font-size:0.8rem; color:var(--text-muted);">Mizer Limited</div>
+            </div>
+          </div>
+          <div id="nova-messages" class="nova-messages"></div>
+          <div class="nova-input-area">
+            <input type="text" id="nova-input" class="nova-input" data-i18n-placeholder="nova_placeholder" placeholder="Bir şey yazın...">
+            <button id="nova-send" class="btn btn-primary" data-i18n="nova_send">Gönder</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer id="site-footer" class="footer"></footer>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+  <script src="nova.js"></script>
+  <script>
+    initCommon('nova').then(() => {
+      initNova();
+    });
+  </script>
+</body>
+</html>
