@@ -1,44 +1,91 @@
 <!DOCTYPE html>
 <html lang="tr" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MizerLimited</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mizer Limited</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Giscus Yorum Sistemi (Daha sonra kendi repo bilgilerinle güncellenecek) -->
+    <script src="https://giscus.app/client.js"
+        data-repo="SENIN_GITHUB_KULLANICI_ADIN/SENIN_REPO_ADIN"
+        data-repo-id="SENIN_REPO_ID"
+        data-category="General"
+        data-category-id="SENIN_CATEGORY_ID"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="tr"
+        crossorigin="anonymous"
+        async>
+    </script>
 </head>
 <body>
-  <div class="page-wrapper">
-    <header id="site-header" class="header"></header>
-
-    <div id="ad-top" class="ad-slot ad-top" style="display:none;"></div>
+    <header>
+        <div class="logo">Mizer Limited</div>
+        <nav>
+            <select id="lang-select">
+                <option value="tr">🇹🇷 Türkçe</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="de">🇩🇪 Deutsch</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="pt">🇵🇹 Português</option>
+                <option value="ru">🇷🇺 Русский</option>
+            </select>
+            <select id="theme-select">
+                <option value="dark">🌑 Koyu (Dark)</option>
+                <option value="light">☀️ Açık (Light)</option>
+                <option value="neon">🟣 Mor / Neon</option>
+                <option value="corporate">🔵 Mavi / Kurumsal</option>
+                <option value="nature">🌿 Yeşil / Doğa</option>
+                <option value="aggressive">🔴 Kırmızı / Agresif</option>
+                <option value="ocean">🌊 Okyanus</option>
+                <option value="sunset">🌅 Gün Batımı</option>
+                <option value="monochrome">🏁 Monokrom</option>
+            </select>
+            <a href="/admin/" class="admin-btn" data-i18n="admin_panel">Yönetim</a>
+        </nav>
+    </header>
 
     <main>
-      <div class="layout-with-ads container">
-        <div id="ad-left" class="ad-slot ad-left" style="display:none;"></div>
+        <section class="hero">
+            <h1 data-i18n="hero_title">Mizer Limited Projeleri</h1>
+            <p data-i18n="hero_subtitle">Güvenli, hızlı ve tamamen ücretsiz proje çözümleri.</p>
+            <button id="nova-toggle" class="nova-btn">🤖 Nova'ya Sor</button>
+        </section>
 
-        <div class="main-content">
-          <section class="hero">
-            <h1 class="hero-title">MizerLimited</h1>
-            <p class="hero-subtitle" data-i18n="hero_subtitle">Projeler, araçlar ve daha fazlası</p>
-            <div class="hero-actions">
-              <a class="btn btn-primary btn-lg" href="projects.html" data-i18n="browse_projects">Projelere göz at</a>
-            </div>
-          </section>
-          <section id="featured-list" class="featured"></section>
-        </div>
+        <section id="projects-container" class="projects-grid">
+            <!-- Projeler JavaScript ile buraya otomatik yüklenecek -->
+        </section>
 
-        <div id="ad-right" class="ad-slot ad-right" style="display:none;"></div>
-      </div>
+        <section class="contact">
+            <h2 data-i18n="contact_title">İletişim</h2>
+            <p>📧 mzerlimited@gmail.com</p>
+        </section>
+
+        <!-- Giscus Yorum Alanı -->
+        <section class="comments">
+            <h3 data-i18n="comments_title">Yorumlar</h3>
+            <div class="giscus-placeholder">Giscus yorumları burada yüklenecek.</div>
+        </section>
     </main>
 
-    <div id="ad-bottom" class="ad-slot ad-bottom" style="display:none;"></div>
-    <footer id="site-footer" class="footer"></footer>
-  </div>
+    <!-- Nova Yapay Zeka Penceresi -->
+    <div id="nova-chat" class="nova-chat hidden">
+        <div class="nova-header">
+            <span>🤖 Nova</span>
+            <button id="nova-close">✕</button>
+        </div>
+        <div id="nova-messages" class="nova-messages"></div>
+        <div class="nova-input-area">
+            <input type="text" id="nova-input" placeholder="Nova'ya bir şey sor...">
+            <button id="nova-send">➤</button>
+        </div>
+    </div>
 
-  <script src="i18n.js"></script>
-  <script src="main.js"></script>
-  <script>
-    initCommon('home').then(renderFeatured);
-  </script>
+    <script src="app.js"></script>
 </body>
 </html>

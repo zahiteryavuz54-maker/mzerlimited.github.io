@@ -1,0 +1,25 @@
+backend:
+  name: git-gateway
+  branch: main # GitHub'daki ana dalın adı (genelde 'main' veya 'master')
+
+media_folder: "assets/images" # Yüklenen resimlerin kaydedileceği yer
+public_folder: "/assets/images"
+
+collections:
+  - name: "projects"
+    label: "Projeler"
+    folder: "_data/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Başlık (TR)", name: "title_tr", widget: "string" }
+      - { label: "Başlık (EN)", name: "title_en", widget: "string" }
+      - { label: "Açıklama (TR)", name: "desc_tr", widget: "text" }
+      - { label: "İndirme Linki", name: "download_link", widget: "string" }
+      
+  - name: "settings"
+    label: "Site Ayarları & Nova"
+    file: "_data/settings.json"
+    fields:
+      - { label: "Nova Karşılama Mesajı", name: "nova_welcome", widget: "string" }
+      - { label: "İletişim E-postası", name: "contact_email", widget: "string" }
