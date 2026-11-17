@@ -236,24 +236,38 @@ function renderFeatured() {
     <div class="projects-grid">${list.map(p => projectCardHtml(p, lang)).join('')}</div>`;
 }
 
-function renderProjects(filterCatId = null) {
+const projectState = { cat: null, q: '' };
+
+function setProjectSearch(q) {
+  projectState.q = (q || '').trim().toLowerCase();
+  renderProjects();
+}
+
+function renderProjects(filterCatId) {
   const container = document.getElementById('projects-list');
   if (!container) return;
+  if (filterCatId !== undefined) projectState.cat = filterCatId || null;
 
   const data = getData();
   const lang = getLang();
+  const emptyHtml = `<div class="empty-state"><p data-i18n="no_projects">${t('no_projects')}</p></div>`;
   if (!data || !data.projects || data.projects.length === 0) {
-    container.innerHTML = `<div class="empty-state"><p data-i18n="no_projects">${t('no_projects')}</p></div>`;
+    container.innerHTML = emptyHtml;
     return;
   }
 
   let projects = data.projects;
-  if (filterCatId) {
-    projects = projects.filter(p => p.categoryId === filterCatId);
+  if (projectState.cat) {
+    projects = projects.filter(p => p.categoryId === projectState.cat);
+  }
+  if (projectState.q) {
+    projects = projects.filter(p =>
+      (getLocalized(p.title, lang) + ' ' + getLocalized(p.description, lang)).toLowerCase().includes(projectState.q)
+    );
   }
 
   if (projects.length === 0) {
-    container.innerHTML = `<div class="empty-state"><p data-i18n="no_projects">${t('no_projects')}</p></div>`;
+    container.innerHTML = emptyHtml;
     return;
   }
 
@@ -272,9 +286,9 @@ function renderCategories() {
   const lang = getLang();
   if (!data) return;
 
-  let html = `<button class="cat-btn active" data-cat="">${t('all_categories')}</button>`;
+  let html = `<button class="cat-btn ${projectState.cat ? '' : 'active'}" data-cat="">${t('all_categories')}</button>`;
   (data.categories || []).forEach(cat => {
-    html += `<button class="cat-btn" data-cat="${cat.id}">${getLocalized(cat.name, lang)}</button>`;
+    html += `<button class="cat-btn ${projectState.cat === cat.id ? 'active' : ''}" data-cat="${cat.id}">${getLocalized(cat.name, lang)}</button>`;
   });
   container.innerHTML = html;
 
@@ -295,7 +309,7 @@ window.addEventListener('languageChanged', () => {
     renderProjects();
   }
   if (document.getElementById('featured-list')) renderFeatured();
-  if (document.getElementById('project-detail')) {
-    // project detail page will handle its own refresh if needed
+  if (document.getElementById('project-detail') && typeof renderProjectDetail === 'function') {
+    renderProjectDetail();
   }
 });

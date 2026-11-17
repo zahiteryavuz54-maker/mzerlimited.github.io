@@ -1,205 +1,96 @@
-/* ===== Internationalization ===== */
+/* ===== Mizer Limited - Çeviriler ===== */
 const translations = {
   tr: {
-    nav_home: "Ana Sayfa",
-    nav_projects: "Projeler",
-    nav_about: "Hakkında",
-    nav_contact: "İletişim",
-    nav_nova: "Nova",
-    hero_subtitle: "Projeler, araçlar ve daha fazlası",
-    projects_title: "Projeler",
-    projects_desc: "Tüm projelerimizi buradan inceleyebilir ve indirebilirsiniz.",
-    all_categories: "Tümü",
-    about_title: "Hakkında",
-    about_text: "Mizer Limited, çeşitli yazılım ve araç projeleri geliştiren bir platformdur. Amacımız kullanışlı, kaliteli ve erişilebilir projeler sunmaktır.",
-    contact_title: "İletişim",
-    contact_text: "Bizimle iletişime geçmek için aşağıdaki e-posta adresini kullanabilirsiniz.",
-    download: "İndir",
-    back_to_projects: "Projelere Dön",
-    nova_title: "Nova Asistan",
-    nova_placeholder: "Bir şey yazın...",
-    nova_send: "Gönder",
-    no_projects: "Henüz proje eklenmemiş.",
-    category: "Kategori",
-    view_project: "İncele",
-    admin_login: "Yönetim Girişi",
-    footer_text: "© 2026 Mizer Limited. Tüm hakları saklıdır."
+    nav_home: 'Ana Sayfa', nav_projects: 'Projeler', nav_about: 'Hakkında', nav_contact: 'İletişim', nav_nova: 'Nova',
+    hero_subtitle: 'Projeler, araçlar ve daha fazlası',
+    browse_projects: 'Projelere göz at', featured_title: 'Öne çıkan projeler',
+    projects_title: 'Projeler', projects_desc: 'Tüm projelerimizi buradan inceleyebilir ve indirebilirsiniz.',
+    search_placeholder: 'Proje ara...', all_categories: 'Tümü', no_projects: 'Proje bulunamadı.',
+    download: 'İndir', view_project: 'Detaylar', back_to_projects: '← Projelere Dön', category: 'Kategori',
+    footer_text: '© 2026 Mizer Limited. Tüm hakları saklıdır.'
   },
   en: {
-    nav_home: "Home",
-    nav_projects: "Projects",
-    nav_about: "About",
-    nav_contact: "Contact",
-    nav_nova: "Nova",
-    hero_subtitle: "Projects, tools and more",
-    projects_title: "Projects",
-    projects_desc: "Browse and download all our projects here.",
-    all_categories: "All",
-    about_title: "About",
-    about_text: "Mizer Limited is a platform that develops various software and tool projects. Our goal is to offer useful, quality and accessible projects.",
-    contact_title: "Contact",
-    contact_text: "You can contact us using the email address below.",
-    download: "Download",
-    back_to_projects: "Back to Projects",
-    nova_title: "Nova Assistant",
-    nova_placeholder: "Type something...",
-    nova_send: "Send",
-    no_projects: "No projects added yet.",
-    category: "Category",
-    view_project: "View",
-    admin_login: "Admin Login",
-    footer_text: "© 2026 Mizer Limited. All rights reserved."
+    nav_home: 'Home', nav_projects: 'Projects', nav_about: 'About', nav_contact: 'Contact', nav_nova: 'Nova',
+    hero_subtitle: 'Projects, tools and more',
+    browse_projects: 'Browse projects', featured_title: 'Featured projects',
+    projects_title: 'Projects', projects_desc: 'Browse and download all of our projects here.',
+    search_placeholder: 'Search projects...', all_categories: 'All', no_projects: 'No projects found.',
+    download: 'Download', view_project: 'Details', back_to_projects: '← Back to projects', category: 'Category',
+    footer_text: '© 2026 Mizer Limited. All rights reserved.'
   },
   de: {
-    nav_home: "Startseite",
-    nav_projects: "Projekte",
-    nav_about: "Über uns",
-    nav_contact: "Kontakt",
-    nav_nova: "Nova",
-    hero_subtitle: "Projekte, Tools und mehr",
-    projects_title: "Projekte",
-    projects_desc: "Durchsuchen und laden Sie alle unsere Projekte hier herunter.",
-    all_categories: "Alle",
-    about_title: "Über uns",
-    about_text: "Mizer Limited ist eine Plattform, die verschiedene Software- und Tool-Projekte entwickelt.",
-    contact_title: "Kontakt",
-    contact_text: "Sie können uns über die untenstehende E-Mail-Adresse kontaktieren.",
-    download: "Herunterladen",
-    back_to_projects: "Zurück zu Projekten",
-    nova_title: "Nova Assistent",
-    nova_placeholder: "Schreiben Sie etwas...",
-    nova_send: "Senden",
-    no_projects: "Noch keine Projekte hinzugefügt.",
-    category: "Kategorie",
-    view_project: "Ansehen",
-    admin_login: "Admin Login",
-    footer_text: "© 2026 Mizer Limited. Alle Rechte vorbehalten."
+    nav_home: 'Startseite', nav_projects: 'Projekte', nav_about: 'Über uns', nav_contact: 'Kontakt', nav_nova: 'Nova',
+    hero_subtitle: 'Projekte, Tools und mehr',
+    browse_projects: 'Projekte ansehen', featured_title: 'Ausgewählte Projekte',
+    projects_title: 'Projekte', projects_desc: 'Hier können Sie alle unsere Projekte ansehen und herunterladen.',
+    search_placeholder: 'Projekte suchen...', all_categories: 'Alle', no_projects: 'Keine Projekte gefunden.',
+    download: 'Herunterladen', view_project: 'Details', back_to_projects: '← Zurück zu den Projekten', category: 'Kategorie',
+    footer_text: '© 2026 Mizer Limited. Alle Rechte vorbehalten.'
   },
   fr: {
-    nav_home: "Accueil",
-    nav_projects: "Projets",
-    nav_about: "À propos",
-    nav_contact: "Contact",
-    nav_nova: "Nova",
-    hero_subtitle: "Projets, outils et plus",
-    projects_title: "Projets",
-    projects_desc: "Parcourez et téléchargez tous nos projets ici.",
-    all_categories: "Tous",
-    about_title: "À propos",
-    about_text: "Mizer Limited est une plateforme qui développe divers projets logiciels et outils.",
-    contact_title: "Contact",
-    contact_text: "Vous pouvez nous contacter en utilisant l'adresse e-mail ci-dessous.",
-    download: "Télécharger",
-    back_to_projects: "Retour aux projets",
-    nova_title: "Assistant Nova",
-    nova_placeholder: "Écrivez quelque chose...",
-    nova_send: "Envoyer",
-    no_projects: "Aucun projet ajouté pour le moment.",
-    category: "Catégorie",
-    view_project: "Voir",
-    admin_login: "Connexion Admin",
-    footer_text: "© 2026 Mizer Limited. Tous droits réservés."
+    nav_home: 'Accueil', nav_projects: 'Projets', nav_about: 'À propos', nav_contact: 'Contact', nav_nova: 'Nova',
+    hero_subtitle: 'Projets, outils et plus encore',
+    browse_projects: 'Voir les projets', featured_title: 'Projets à la une',
+    projects_title: 'Projets', projects_desc: 'Consultez et téléchargez tous nos projets ici.',
+    search_placeholder: 'Rechercher un projet...', all_categories: 'Tous', no_projects: 'Aucun projet trouvé.',
+    download: 'Télécharger', view_project: 'Détails', back_to_projects: '← Retour aux projets', category: 'Catégorie',
+    footer_text: '© 2026 Mizer Limited. Tous droits réservés.'
   },
   es: {
-    nav_home: "Inicio",
-    nav_projects: "Proyectos",
-    nav_about: "Acerca de",
-    nav_contact: "Contacto",
-    nav_nova: "Nova",
-    hero_subtitle: "Proyectos, herramientas y más",
-    projects_title: "Proyectos",
-    projects_desc: "Explora y descarga todos nuestros proyectos aquí.",
-    all_categories: "Todos",
-    about_title: "Acerca de",
-    about_text: "Mizer Limited es una plataforma que desarrolla varios proyectos de software y herramientas.",
-    contact_title: "Contacto",
-    contact_text: "Puedes contactarnos usando la dirección de correo electrónico a continuación.",
-    download: "Descargar",
-    back_to_projects: "Volver a Proyectos",
-    nova_title: "Asistente Nova",
-    nova_placeholder: "Escribe algo...",
-    nova_send: "Enviar",
-    no_projects: "Aún no se han añadido proyectos.",
-    category: "Categoría",
-    view_project: "Ver",
-    admin_login: "Acceso Admin",
-    footer_text: "© 2026 Mizer Limited. Todos los derechos reservados."
+    nav_home: 'Inicio', nav_projects: 'Proyectos', nav_about: 'Acerca de', nav_contact: 'Contacto', nav_nova: 'Nova',
+    hero_subtitle: 'Proyectos, herramientas y más',
+    browse_projects: 'Ver proyectos', featured_title: 'Proyectos destacados',
+    projects_title: 'Proyectos', projects_desc: 'Explora y descarga todos nuestros proyectos aquí.',
+    search_placeholder: 'Buscar proyectos...', all_categories: 'Todos', no_projects: 'No se encontraron proyectos.',
+    download: 'Descargar', view_project: 'Detalles', back_to_projects: '← Volver a proyectos', category: 'Categoría',
+    footer_text: '© 2026 Mizer Limited. Todos los derechos reservados.'
   },
   pt: {
-    nav_home: "Início",
-    nav_projects: "Projetos",
-    nav_about: "Sobre",
-    nav_contact: "Contato",
-    nav_nova: "Nova",
-    hero_subtitle: "Projetos, ferramentas e mais",
-    projects_title: "Projetos",
-    projects_desc: "Navegue e baixe todos os nossos projetos aqui.",
-    all_categories: "Todos",
-    about_title: "Sobre",
-    about_text: "Mizer Limited é uma plataforma que desenvolve vários projetos de software e ferramentas.",
-    contact_title: "Contato",
-    contact_text: "Você pode nos contatar usando o endereço de e-mail abaixo.",
-    download: "Baixar",
-    back_to_projects: "Voltar aos Projetos",
-    nova_title: "Assistente Nova",
-    nova_placeholder: "Digite algo...",
-    nova_send: "Enviar",
-    no_projects: "Nenhum projeto adicionado ainda.",
-    category: "Categoria",
-    view_project: "Ver",
-    admin_login: "Login Admin",
-    footer_text: "© 2026 Mizer Limited. Todos os direitos reservados."
+    nav_home: 'Início', nav_projects: 'Projetos', nav_about: 'Sobre', nav_contact: 'Contato', nav_nova: 'Nova',
+    hero_subtitle: 'Projetos, ferramentas e mais',
+    browse_projects: 'Ver projetos', featured_title: 'Projetos em destaque',
+    projects_title: 'Projetos', projects_desc: 'Veja e baixe todos os nossos projetos aqui.',
+    search_placeholder: 'Pesquisar projetos...', all_categories: 'Todos', no_projects: 'Nenhum projeto encontrado.',
+    download: 'Baixar', view_project: 'Detalhes', back_to_projects: '← Voltar aos projetos', category: 'Categoria',
+    footer_text: '© 2026 Mizer Limited. Todos os direitos reservados.'
   },
   ru: {
-    nav_home: "Главная",
-    nav_projects: "Проекты",
-    nav_about: "О нас",
-    nav_contact: "Контакты",
-    nav_nova: "Nova",
-    hero_subtitle: "Проекты, инструменты и многое другое",
-    projects_title: "Проекты",
-    projects_desc: "Просматривайте и скачивайте все наши проекты здесь.",
-    all_categories: "Все",
-    about_title: "О нас",
-    about_text: "Mizer Limited — платформа, разрабатывающая различные программные проекты и инструменты.",
-    contact_title: "Контакты",
-    contact_text: "Вы можете связаться с нами по электронной почте ниже.",
-    download: "Скачать",
-    back_to_projects: "Назад к проектам",
-    nova_title: "Ассистент Nova",
-    nova_placeholder: "Напишите что-нибудь...",
-    nova_send: "Отправить",
-    no_projects: "Проекты ещё не добавлены.",
-    category: "Категория",
-    view_project: "Смотреть",
-    admin_login: "Вход Admin",
-    footer_text: "© 2026 Mizer Limited. Все права защищены."
+    nav_home: 'Главная', nav_projects: 'Проекты', nav_about: 'О нас', nav_contact: 'Контакты', nav_nova: 'Nova',
+    hero_subtitle: 'Проекты, инструменты и многое другое',
+    browse_projects: 'Смотреть проекты', featured_title: 'Избранные проекты',
+    projects_title: 'Проекты', projects_desc: 'Здесь вы можете просмотреть и скачать все наши проекты.',
+    search_placeholder: 'Поиск проектов...', all_categories: 'Все', no_projects: 'Проекты не найдены.',
+    download: 'Скачать', view_project: 'Подробнее', back_to_projects: '← Назад к проектам', category: 'Категория',
+    footer_text: '© 2026 Mizer Limited. Все права защищены.'
   }
 };
 
+function getLang() {
+  let l = 'tr';
+  try { l = localStorage.getItem('mizer_lang') || 'tr'; } catch (e) {}
+  return translations[l] ? l : 'tr';
+}
+
 function t(key) {
-  const lang = localStorage.getItem('mizer_lang') || 'tr';
-  return (translations[lang] && translations[lang][key]) || translations['tr'][key] || key;
+  const l = getLang();
+  return (translations[l] && translations[l][key]) || translations.tr[key] || key;
 }
 
 function applyTranslations() {
+  document.documentElement.lang = getLang();
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    el.textContent = t(key);
+    el.textContent = t(el.getAttribute('data-i18n'));
   });
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    el.placeholder = t(key);
+    el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
   });
 }
 
 function setLanguage(lang) {
-  localStorage.setItem('mizer_lang', lang);
+  if (!translations[lang]) lang = 'tr';
+  try { localStorage.setItem('mizer_lang', lang); } catch (e) {}
+  const select = document.getElementById('langSelect');
+  if (select) select.value = lang;
   applyTranslations();
-  // Trigger custom event so other scripts can react
   window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
-}
-
-function getLang() {
-  return localStorage.getItem('mizer_lang') || 'tr';
 }
