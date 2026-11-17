@@ -22,33 +22,57 @@ const LANGS = [
   { id: 'ru', name: 'Русский' }
 ];
 
+// ===== Ek çeviriler =====
+const EXTRA_I18N = {
+  tr: { featured_title: 'Öne çıkan projeler', browse_projects: 'Projelere göz at' },
+  en: { featured_title: 'Featured projects', browse_projects: 'Browse projects' },
+  de: { featured_title: 'Ausgewählte Projekte', browse_projects: 'Projekte ansehen' },
+  fr: { featured_title: 'Projets à la une', browse_projects: 'Voir les projets' },
+  es: { featured_title: 'Proyectos destacados', browse_projects: 'Ver proyectos' },
+  pt: { featured_title: 'Projetos em destaque', browse_projects: 'Ver projetos' },
+  ru: { featured_title: 'Избранные проекты', browse_projects: 'Смотреть проекты' }
+};
+if (typeof translations !== 'undefined') {
+  Object.keys(EXTRA_I18N).forEach(l => Object.assign(translations[l] = translations[l] || {}, EXTRA_I18N[l]));
+}
+
+// ===== İndirme yardımcıları =====
+// Site içindeki dosyalar (örn. indirmeler/dosya.zip) yönlendirme olmadan doğrudan iner.
+function hasDownload(url) { return !!url && url !== '#'; }
+
+function downloadAttrs(url) {
+  if (!hasDownload(url)) return 'href="#" onclick="alert(\'İndirme linki henüz eklenmemiş\');return false;"';
+  let local = false;
+  try { local = new URL(url, location.href).origin === location.origin; } catch (e) {}
+  return local ? `href="${url}" download` : `href="${url}" target="_blank" rel="noopener"`;
+}
+
+function downloadButton(project, extraClass = '') {
+  return `<a ${downloadAttrs(project.downloadUrl)} class="btn btn-primary btn-download ${extraClass}" data-i18n="download">${t('download')}</a>`;
+}
+
 // ===== Data Management =====
+// Her ziyaretçi sitenin güncel default-data.json dosyasını okur.
+// Böylece admin panelinden yapılan değişiklik herkese yansır.
+window.__SITE_DATA__ = null;
+
 function getData() {
-  const saved = localStorage.getItem('mizer_data');
-  if (saved) {
-    try {
-      return JSON.parse(saved);
-    } catch (e) {
-      console.warn('Invalid saved data, using default');
-    }
-  }
-  // Fallback to embedded default (will be overwritten by fetch if available)
-  return window.__DEFAULT_DATA__ || null;
+  return window.__SITE_DATA__;
 }
 
 function saveData(data) {
-  localStorage.setItem('mizer_data', JSON.stringify(data));
+  window.__SITE_DATA__ = data;
+  // Admin panelinde publishData() tanımlıdır ve değişikliği GitHub'a yollar.
+  if (typeof publishData === 'function') publishData(data);
 }
 
 async function loadDefaultData() {
   try {
-    const res = await fetch('default-data.json');
+    const res = await fetch('default-data.json?v=' + Date.now(), { cache: 'no-store' });
     if (res.ok) {
       const data = await res.json();
       window.__DEFAULT_DATA__ = data;
-      if (!localStorage.getItem('mizer_data')) {
-        saveData(data);
-      }
+      window.__SITE_DATA__ = data;
       return data;
     }
   } catch (e) {
@@ -100,6 +124,7 @@ function renderHeader(activePage = '') {
           <li><a href="contact.html" class="${activePage === 'contact' ? 'active' : ''}" data-i18n="nav_contact">İletişim</a></li>
           <li><a href="nova.html" class="${activePage === 'nova' ? 'active' : ''}" data-i18n="nav_nova">Nova</a></li>
         </ul>
+        <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <div class="nav-actions">
           <select id="themeSelect" class="theme-select" title="Tema">
             ${THEMES.map(t => `<option value="${t.id}">${t.name}</option>`).join('')}
@@ -116,6 +141,14 @@ function renderHeader(activePage = '') {
   document.getElementById('langSelect').addEventListener('change', (e) => {
     setLanguage(e.target.value);
   });
+
+  const toggle = header.querySelector('.nav-toggle');
+  const links = header.querySelector('.nav-links');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
   initTheme();
   initLanguage();
@@ -158,11 +191,6 @@ function renderFooter() {
 // ===== Init common =====
 async function initCommon(activePage = '') {
   await loadDefaultData();
-  // Ensure data exists
-  if (!getData()) {
-    const def = window.__DEFAULT_DATA__;
-    if (def) saveData(def);
-  }
   renderHeader(activePage);
   renderFooter();
   renderAds();
@@ -174,6 +202,38 @@ function getCategoryName(catId, lang) {
   if (!data) return '';
   const cat = data.categories.find(c => c.id === catId);
   return cat ? getLocalized(cat.name, lang) : '';
+}
+
+function projectCardHtml(p, lang) {
+  return `
+    <article class="project-card">
+      <a class="project-card-media" href="project.html?id=${p.id}" tabindex="-1" aria-hidden="true">
+        <img class="project-card-img" loading="lazy" src="${p.image || 'https://placehold.co/600x340/1a1a2e/7c5cfc?text=Proje'}" alt="">
+      </a>
+      <div class="project-card-body">
+        <div class="project-card-cat">${getCategoryName(p.categoryId, lang)}</div>
+        <h3 class="project-card-title">${getLocalized(p.title, lang)}</h3>
+        <p class="project-card-desc">${getLocalized(p.description, lang)}</p>
+        <div class="project-card-actions">
+          ${hasDownload(p.downloadUrl) ? downloadButton(p, 'btn-sm') : ''}
+          <a href="project.html?id=${p.id}" class="btn btn-secondary btn-sm" data-i18n="view_project">${t('view_project')}</a>
+        </div>
+      </div>
+    </article>`;
+}
+
+function renderFeatured() {
+  const box = document.getElementById('featured-list');
+  if (!box) return;
+  const data = getData();
+  if (!data || !data.projects || !data.projects.length) { box.innerHTML = ''; return; }
+  const lang = getLang();
+  let list = data.projects.filter(p => p.featured);
+  if (!list.length) list = data.projects;
+  list = list.slice(0, 3);
+  box.innerHTML = `
+    <h2 class="section-title" data-i18n="featured_title">${t('featured_title')}</h2>
+    <div class="projects-grid">${list.map(p => projectCardHtml(p, lang)).join('')}</div>`;
 }
 
 function renderProjects(filterCatId = null) {
@@ -199,17 +259,7 @@ function renderProjects(filterCatId = null) {
 
   container.innerHTML = `
     <div class="projects-grid">
-      ${projects.map(p => `
-        <div class="project-card">
-          <img class="project-card-img" src="${p.image || 'https://placehold.co/600x340/1a1a2e/7c5cfc?text=Proje'}" alt="">
-          <div class="project-card-body">
-            <div class="project-card-cat">${getCategoryName(p.categoryId, lang)}</div>
-            <h3 class="project-card-title">${getLocalized(p.title, lang)}</h3>
-            <p class="project-card-desc">${getLocalized(p.description, lang)}</p>
-            <a href="project.html?id=${p.id}" class="btn btn-primary btn-sm" data-i18n="view_project">${t('view_project')}</a>
-          </div>
-        </div>
-      `).join('')}
+      ${projects.map(p => projectCardHtml(p, lang)).join('')}
     </div>
   `;
 }
@@ -244,6 +294,7 @@ window.addEventListener('languageChanged', () => {
     renderCategories();
     renderProjects();
   }
+  if (document.getElementById('featured-list')) renderFeatured();
   if (document.getElementById('project-detail')) {
     // project detail page will handle its own refresh if needed
   }

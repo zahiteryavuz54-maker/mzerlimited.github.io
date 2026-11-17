@@ -1,35 +1,44 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="dark">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MizerLimited</title>
-<meta name="description" content="MizerLimited projeleri. Doğrudan siteden indirin.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MizerLimited</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><div class="wrap">
-  <a class="logo" href="index.html">Mizer<span>Limited</span></a>
-  <nav><a href="index.html" aria-current="page">Ana sayfa</a><a href="projects.html">Projeler</a></nav>
-</div></header>
-<main class="wrap">
-  <section class="hero"><div>
-    <h1>Projelerimizi doğrudan indirin</h1>
-    <p>Tüm projelerimiz tek sayfada. Yönlendirme yok, reklam yok: tıkla ve indir.</p>
-    <div class="actions">
-      <a class="btn" href="projects.html">Projelere göz at</a>
-      <a class="btn alt" href="#hakkimizda">Daha fazla bilgi</a>
-    </div>
-  </div></section>
-  <section class="features" id="hakkimizda">
-    <div><h3>Doğrudan indirme</h3><p>Dosyalar bu siteden iner. Başka bir sayfaya yönlendirilmezsiniz.</p></div>
-    <div><h3>Güncel sürümler</h3><p>Her projenin sürümü ve dosya boyutu kartında yazar.</p></div>
-    <div><h3>Her cihazda çalışır</h3><p>Telefon, tablet ve bilgisayarda aynı rahatlıkla kullanılır.</p></div>
-  </section>
-</main>
-<footer><div class="wrap">© 2026 MizerLimited</div></footer>
+  <div class="page-wrapper">
+    <header id="site-header" class="header"></header>
+
+    <div id="ad-top" class="ad-slot ad-top" style="display:none;"></div>
+
+    <main>
+      <div class="layout-with-ads container">
+        <div id="ad-left" class="ad-slot ad-left" style="display:none;"></div>
+
+        <div class="main-content">
+          <section class="hero">
+            <h1 class="hero-title">MizerLimited</h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">Projeler, araçlar ve daha fazlası</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="projects.html" data-i18n="browse_projects">Projelere göz at</a>
+            </div>
+          </section>
+          <section id="featured-list" class="featured"></section>
+        </div>
+
+        <div id="ad-right" class="ad-slot ad-right" style="display:none;"></div>
+      </div>
+    </main>
+
+    <div id="ad-bottom" class="ad-slot ad-bottom" style="display:none;"></div>
+    <footer id="site-footer" class="footer"></footer>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+  <script>
+    initCommon('home').then(renderFeatured);
+  </script>
 </body>
 </html>

@@ -71,9 +71,7 @@
         ${project.image ? `<img class="project-detail-img" src="${project.image}" alt="">` : ''}
         ${videoHtml}
         <p style="margin: 20px 0; line-height: 1.7;">${getLocalized(project.description, lang)}</p>
-        <a href="${project.downloadUrl || '#'}" class="btn btn-primary" data-i18n="download" ${!project.downloadUrl || project.downloadUrl === '#' ? 'onclick="alert(\'İndirme linki henüz eklenmemiş\');return false;"' : 'target="_blank"'}>
-          ${t('download')}
-        </a>
+        ${downloadButton(project, 'btn-lg')}
       `;
       applyTranslations();
     });
